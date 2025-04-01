@@ -15,7 +15,9 @@ const App = () => {
                 <Route path="/verify" element={<VerifyPage />} />
                 <Route path="/cart" element={<CardListPage />} />
             </Routes>
+
         </HashRouter>
+
     );
 };
 

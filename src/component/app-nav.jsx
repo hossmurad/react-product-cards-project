@@ -5,7 +5,7 @@ const AppNav = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary ">
-                <div className="container-fluid ">
+                <div className="container-fluid px-5 ">
                     <a className="navbar-brand" href="/">
                        <img className="nav-img" src={logo} alt="logo" />
                     </a>
@@ -16,11 +16,11 @@ const AppNav = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                            <a className="nav-link" href="/product">Product List</a>
-                            <a className="nav-link" href="/login">Login</a>
-                            <a className="nav-link" href="/verify">Verify</a>
-                            <a className="nav-link" href="/cart">Card List</a>
+                            <a className="nav-link active" aria-current="page" href="#/">Home</a>
+                            <a className="nav-link" href="#/product">Product List</a>
+                            <a className="nav-link" href="#/login">Login</a>
+                            <a className="nav-link" href="#/verify">Verify</a>
+                            <a className="nav-link" href="#/cart">Card List</a>
 
                         </div>
                     </div>

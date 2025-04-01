@@ -1,11 +1,11 @@
 import React from 'react';
-import layout from "../layout/layout.jsx";
+import Layout from "../layout/layout.jsx";
 import VerifyLoginForm from "../component/verify-login-form.jsx";
 const VerifyPage = () => {
     return (
-        <layout>
+        <Layout>
             <VerifyLoginForm/>
-        </layout>
+        </Layout>
     );
 };
 
