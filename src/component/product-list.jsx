@@ -117,6 +117,10 @@ const ProductList = () => {
                                      <div className="card-body ">
                                          <p className="p-1 m-0 fw-light">{item['title']}</p>
                                          <p className="p-1 m-0 fw-bold">BDT {item['price']}</p>
+
+
+                                            <button type="button" className="btn btn-success fw-light mt-1 text-uppercase  "> Add to Card</button>
+
                                      </div>
                                 </div>
                             </div>
