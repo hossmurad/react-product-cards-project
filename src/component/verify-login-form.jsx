@@ -18,10 +18,11 @@ const VerifyLoginForm = () => {
         let OTP = formData.get('OTP')
         setLoading("");
         let data = await VerifyLoginRequest(OTP)
+        console.log("Token:", data)
         sessionStorage.setItem("Token", data)
         setLoading("d-none");
         toast.success("Login successful!");
-        event.target.reset();
+        sessionStorage.removeItem("email");
         navigate("/")
 
     }

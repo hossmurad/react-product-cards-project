@@ -15,12 +15,13 @@ const LoginForm = () => {
         let formData = new FormData(event.target);
         let email = formData.get('email');
         sessionStorage.setItem('email', email);
+        console.log('email:', email)
         setLoading("");
         let data = await LoginRequest(email)
         toast.success(data);
         setLoading("d-none");
         navigate("/verify")
-        event.target.reset();
+
 
     }
 

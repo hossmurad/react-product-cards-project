@@ -28,16 +28,32 @@ export const ProductListRequest = async()=>{
 }
 
 export const CreateCartRequest = async()=>{
+    let URL = `https://cart-api.teamrabbil.com/api/create-cart/${id}`;
+    let headers = {'headers': {'token':sessionStorage.getItem('Token') }};
 
+    let res = await axios.get(URL, headers);
+    return res.data['msg'];
 
 }
 
 export const RemoveCartRequest = async()=>{
+    let URL = `https://cart-api.teamrabbil.com/api/remove-cart/${id}`;
+    let headers = {'headers': {'token':sessionStorage.getItem('Token') }};
 
+    let res = await axios.get(URL, headers);
+    return res.data['msg'];
 
 }
 
-export const CartListRequest = async()=>{
 
 
-}
+
+
+export const CartListRequest = async (id) => {
+
+    let URL = "https://cart-api.teamrabbil.com/api/cart-list";
+    let headers = {'headers': {'token':sessionStorage.getItem('Token') }};
+    let res = await axios.get(URL, headers);
+    return res.data['data'];
+
+};
