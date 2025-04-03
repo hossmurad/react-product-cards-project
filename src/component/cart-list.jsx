@@ -22,8 +22,8 @@ const CartList = () => {
         })();
     }, []);
 
-    // ✅ Function to remove an item from cart
-    const RemoveToCart = async (id) => {
+
+    const RemoveCart = async (id) => {
         if (!sessionStorage.getItem("Token")) {
             navigate("/login");
             return;
@@ -63,7 +63,7 @@ const CartList = () => {
                                     <p className="p-1 m-0 fw-light">{item["product"]["title"]}</p>
                                     <p className="p-1 m-0 fw-bold">BDT {item["product"]["price"]}</p>
                                     <button
-                                        onClick={async () => await RemoveToCart(item.id)}
+                                        onClick={async ()=>{await RemoveCart(item['product']['id'])}}
                                         type="button"
                                         className="btn btn-danger fw-light mt-1 text-uppercase"
                                         disabled={cartLoading === item.id}

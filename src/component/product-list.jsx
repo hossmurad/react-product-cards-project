@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "./loader.jsx";
-import {CartListRequest, CreateCartRequest, ProductListRequest} from "../APIRequest/APIRequest.js";
+import { CreateCartRequest, ProductListRequest } from "../APIRequest/APIRequest.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -19,10 +19,13 @@ const ProductList = () => {
         })();
     }, []);
 
-    const AddToCart = async (id) => {
+
+
+
+    const addToCart = async (id) => {
         if (!sessionStorage.getItem("Token")) {
             navigate("/login");
-            return;
+
         }
 
         setCartLoading(id);
@@ -30,6 +33,13 @@ const ProductList = () => {
         setCartLoading(null);
         toast.success(res);
     };
+
+
+
+
+
+
+
 
     if (loading === "") {
         return <Loader />;
@@ -46,7 +56,7 @@ const ProductList = () => {
                                 <p className="p-1 m-0 fw-light">{item.title}</p>
                                 <p className="p-1 m-0 fw-bold">BDT {item.price}</p>
                                 <button
-                                    onClick={async () =>await AddToCart(item.id)}
+                                    onClick={async ()=>{await addToCart(item['id'])}}
                                     type="button"
                                     className="btn btn-success fw-light mt-1 text-uppercase"
                                     disabled={cartLoading === item.id}

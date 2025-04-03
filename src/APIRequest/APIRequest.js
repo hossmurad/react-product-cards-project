@@ -27,22 +27,22 @@ export const ProductListRequest = async()=>{
 
 }
 
-export const CreateCartRequest = async()=>{
-    let URL = `https://cart-api.teamrabbil.com/api/create-cart/${id}`;
-    let headers = {'headers': {'token':sessionStorage.getItem('Token') }};
-
-    let res = await axios.get(URL, headers);
+export const CreateCartRequest=async (id)=> {
+    let header = {'headers': {'token': sessionStorage.getItem('token')}};
+    let URL = `https://cart-api.teamrabbil.com/api/create-cart/${id}`
+    let res = await axios.get(URL, header)
     return res.data['msg'];
-
 }
 
-export const RemoveCartRequest = async()=>{
-    let URL = `https://cart-api.teamrabbil.com/api/remove-cart/${id}`;
-    let headers = {'headers': {'token':sessionStorage.getItem('Token') }};
 
-    let res = await axios.get(URL, headers);
+
+
+
+export const RemoveCartRequest=async (id)=>{
+    let header={ 'headers': { 'token':sessionStorage.getItem('token') }};
+    let URL=`https://cart-api.teamrabbil.com/api/remove-cart/${id}`
+    let res=await axios.get(URL,header)
     return res.data['msg'];
-
 }
 
 
