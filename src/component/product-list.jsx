@@ -1,136 +1,41 @@
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
+import Loader from "./loader.jsx";
+import { ProductListRequest } from "../APIRequest/APIRequest.js";
 
 const ProductList = () => {
+    const [list, setList] = useState([]);
 
-    let data =[
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        },
-        {
-            "title": "Iphone 16 pro max 20GB ",
-            "Description": "20Gb Ram 500 GB Rom 100MX camera",
-            "price": "10000",
-            "img":"/iphone.png"
-        }
+    useEffect(() => {
+        (async () => {
+            let res = await ProductListRequest();
+            setList(res);
+        })();
+    }, []);
 
-    ]
-
-
-
-    return (
-        <div className="container ">
-            <div className="row">
-                {
-                    data.map((item,index) => {
-                        return (
-                            <div className="col-md-3 p-3">
-                                <div className="card shadow-sm rounded-2 border-0 ">
-                                      <img src={item.img} alt="" className="card-img-top w-100"/>
-                                     <div className="card-body ">
-                                         <p className="p-1 m-0 fw-light">{item['title']}</p>
-                                         <p className="p-1 m-0 fw-bold">BDT {item['price']}</p>
-
-
-                                            <button type="button" className="btn btn-success fw-light mt-1 text-uppercase  "> Add to Card</button>
-
-                                     </div>
+    if (list.length === 0) {
+        return <Loader />;
+    } else {
+        return (
+            <div className="container animate__animated animate__fadeIn">
+                <div className="row">
+                    {list.map((item, index) => (
+                        <div key={index} className="col-md-3 p-3">
+                            <div className="card shadow-sm rounded-2 border-0">
+                                <img src={item.image} alt={item.title} className="card-img-top w-100" />
+                                <div className="card-body">
+                                    <p className="p-1 m-0 fw-light">{item.title}</p>
+                                    <p className="p-1 m-0 fw-bold">BDT {item.price}</p>  {/* ✅ Fixed incorrect `}` */}
+                                    <button type="button" className="btn btn-success fw-light mt-1 text-uppercase">
+                                        Add to Cart
+                                    </button>
                                 </div>
                             </div>
-                        )
-                    })
-                }
+                        </div>
+                    ))}
+                </div>
             </div>
-            
-        </div>
-    );
+        );
+    }
 };
 
 export default ProductList;

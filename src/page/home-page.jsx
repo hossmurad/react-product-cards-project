@@ -1,11 +1,12 @@
 import React from 'react';
-import Layout from "../layout/layout.jsx";
-import Loader from "../component/loader.jsx";
+import Layout from "../layout/layout.jsx"
+import ProductList from "../component/product-list.jsx";
+
 
 const HomePage = () => {
     return (
         <Layout>
-             <Loader/>
+            <ProductList/>
         </Layout>
     );
 };
